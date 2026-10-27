@@ -4,7 +4,7 @@ import Header from '../components/Header.jsx'
 import GroupCard from '../components/GroupCard.jsx'
 import EmptyState from '../components/EmptyState.jsx'
 
-export default function Groups({ groups, tasks, addGroup }) {
+export default function Groups({ groups, tasks, addGroup, deleteGroup }) {
   const [name, setName] = useState('')
   const [error, setError] = useState('')
 
@@ -22,6 +22,17 @@ export default function Groups({ groups, tasks, addGroup }) {
   function countFor(groupId) {
     const groupTasks = tasks.filter((t) => t.groupId === groupId)
     return { total: groupTasks.length, done: groupTasks.filter((t) => t.done).length }
+  }
+
+  function handleDeleteGroup(group) {
+    const taskCount = tasks.filter((t) => t.groupId === group.id).length
+    const message =
+      taskCount > 0
+        ? `Delete group "${group.name}" and its ${taskCount} task(s)? This cannot be undone.`
+        : `Delete group "${group.name}"? This cannot be undone.`
+    if (window.confirm(message)) {
+      deleteGroup(group.id)
+    }
   }
 
   return (
@@ -69,6 +80,7 @@ export default function Groups({ groups, tasks, addGroup }) {
                 group={group}
                 taskCount={total}
                 doneCount={done}
+                onDelete={() => handleDeleteGroup(group)}
               />
             )
           })}
