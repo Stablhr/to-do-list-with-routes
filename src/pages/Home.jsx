@@ -9,7 +9,7 @@ const dateLabel = new Date().toLocaleDateString(undefined, {
   day: 'numeric',
 })
 
-export default function Home({ tasks, clearAllTasks, openGuide }) {
+export default function Home({ tasks, clearAllTasks }) {
   const total = tasks.length
   const completed = tasks.filter((t) => t.done).length
   const pending = total - completed
@@ -24,15 +24,15 @@ export default function Home({ tasks, clearAllTasks, openGuide }) {
 
   return (
     <div className="flex flex-col gap-5 px-0 py-2">
-      <Header title="Home" date={dateLabel} onGuideClick={openGuide} />
+      <Header title="Home" date={dateLabel} />
 
       <section className="rounded-3xl bg-sand/60 p-5">
         <h2 className="text-xl font-semibold text-espresso">
           Welcome back! Here's your day at a glance.
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-mocha">
-          A calm, warm place to keep your tasks organized by category. Create
-          categories, add tasks, and track your progress — all in one spot.
+          A calm, warm place to keep your tasks organized by group. Create groups,
+          add tasks, and track your progress — all in one spot.
         </p>
       </section>
 
@@ -51,10 +51,10 @@ export default function Home({ tasks, clearAllTasks, openGuide }) {
 
       <section className="flex flex-col gap-2 sm:flex-row">
         <Link
-          to="/categories"
+          to="/groups"
           className="flex min-h-11 flex-1 items-center justify-center rounded-2xl bg-latte px-5 py-3 font-medium text-white shadow-btn transition-[background-color,transform] duration-150 ease-out hover:bg-latte-dark active:scale-95 focus-visible:ring-2 focus-visible:ring-latte-dark/60 focus-visible:outline-none"
         >
-          Go to Categories
+          Go to Task Groups
         </Link>
         <Link
           to="/guide"
