@@ -101,8 +101,10 @@ export default function App() {
     <div className="min-h-dvh bg-cream">
       <div className="mx-auto flex h-dvh w-full max-w-xl flex-col sm:my-6 sm:h-[calc(100dvh-3rem)] sm:min-h-0 sm:rounded-3xl sm:border sm:border-sand-dark/50 sm:shadow-card">
         <main
-          className={`scroll-area safe-x app-pt flex-1 min-h-0 overflow-y-auto overscroll-contain pb-24 short-screen:pb-6 sm:min-h-0 sm:pb-6 ${
-            location.pathname === '/' ? 'home-desktop' : ''
+          className={`scroll-area safe-x app-pt flex-1 overscroll-contain pb-24 short-screen:pb-6 sm:min-h-0 sm:pb-6 ${
+            location.pathname === '/'
+              ? '!overflow-hidden home-desktop'
+              : 'min-h-0 overflow-y-auto'
           }`}
         >
           <Routes>
