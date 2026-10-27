@@ -1,4 +1,4 @@
-import { CoffeeIcon, QuestionIcon } from './icons.jsx'
+import { QuestionIcon } from './icons.jsx'
 
 export default function Header({ title, date, onGuideClick }) {
   return (
@@ -9,21 +9,16 @@ export default function Header({ title, date, onGuideClick }) {
         </h1>
         {date ? <p className="mt-1 text-sm text-mocha">{date}</p> : null}
       </div>
-      <div className="flex shrink-0 items-center gap-2">
-        <span className="grid h-11 w-11 place-items-center rounded-2xl bg-sand text-latte-dark">
-          <CoffeeIcon className="h-6 w-6" />
-        </span>
-        {onGuideClick ? (
-          <button
-            type="button"
-            onClick={onGuideClick}
-            aria-label="Open user guide"
-            className="grid h-11 w-11 place-items-center rounded-2xl bg-sand text-latte-dark transition-colors duration-150 hover:bg-sand-dark focus-visible:ring-2 focus-visible:ring-latte/60 focus-visible:outline-none"
-          >
-            <QuestionIcon className="h-6 w-6" />
-          </button>
-        ) : null}
-      </div>
+      {onGuideClick ? (
+        <button
+          type="button"
+          onClick={onGuideClick}
+          aria-label="Open user guide"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-sand text-latte-dark transition-colors duration-150 hover:bg-sand-dark focus-visible:ring-2 focus-visible:ring-latte/60 focus-visible:outline-none"
+        >
+          <QuestionIcon className="h-6 w-6" />
+        </button>
+      ) : null}
     </header>
   )
 }
