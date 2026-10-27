@@ -24,7 +24,7 @@ const STEPS = [
   },
 ]
 
-export function GuideContent() {
+export function GuideContent({ onClose }) {
   return (
     <>
       <ol className="flex flex-col gap-3">
@@ -46,6 +46,7 @@ export function GuideContent() {
 
       <Link
         to="/categories"
+        onClick={onClose}
         className="mt-4 flex min-h-11 items-center justify-center rounded-2xl bg-latte px-5 py-3 font-medium text-white shadow-btn transition-[background-color,transform] duration-150 ease-out hover:bg-latte-dark active:scale-95 focus-visible:ring-2 focus-visible:ring-latte-dark/60 focus-visible:outline-none"
       >
         Go to Categories
