@@ -4,7 +4,7 @@ import Header from '../components/Header.jsx'
 import GroupCard from '../components/GroupCard.jsx'
 import EmptyState from '../components/EmptyState.jsx'
 
-export default function Groups({ groups, tasks, addGroup, deleteGroup, clearGroupTasks }) {
+export default function Groups({ groups, tasks, addGroup, deleteGroup, clearGroupTasks, openGuide }) {
   const [name, setName] = useState('')
   const [error, setError] = useState('')
 
@@ -45,7 +45,7 @@ export default function Groups({ groups, tasks, addGroup, deleteGroup, clearGrou
 
   return (
     <div className="flex flex-col gap-5 px-0 py-2">
-      <Header title="Categories" />
+      <Header title="Categories" onGuideClick={openGuide} />
 
       <form onSubmit={handleCreate} className="flex flex-col gap-3 sm:flex-row">
         <label htmlFor="new-group" className="sr-only">

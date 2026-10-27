@@ -4,7 +4,7 @@ import Navbar from './components/Navbar.jsx'
 import Home from './pages/Home.jsx'
 import Groups from './pages/Groups.jsx'
 import GroupTasks from './pages/GroupTasks.jsx'
-import Guide from './pages/Guide.jsx'
+import Guide, { GuideContent } from './pages/Guide.jsx'
 import Developers from './pages/Developers.jsx'
 import NotFound from './pages/NotFound.jsx'
 import { loadGroups, saveGroups, loadTasks, saveTasks } from './lib/storage.js'
@@ -23,6 +23,7 @@ export default function App() {
   const location = useLocation()
   const [groups, setGroups] = useState(loadGroups)
   const [tasks, setTasks] = useState(loadTasks)
+  const [guideOpen, setGuideOpen] = useState(false)
 
   useEffect(() => {
     saveGroups(groups)
@@ -95,6 +96,7 @@ export default function App() {
     deleteTask,
     clearGroupTasks,
     clearAllTasks,
+    openGuide: () => setGuideOpen(true),
   }
 
   return (
@@ -113,15 +115,40 @@ export default function App() {
             <Route path="/groups/:groupId" element={<GroupTasks {...sharedProps} />} />
             <Route path="/categories" element={<Groups {...sharedProps} />} />
             <Route path="/categories/:categoryId" element={<GroupTasks {...sharedProps} />} />
-            <Route path="/guide" element={<Guide />} />
-            <Route path="/developers" element={<Developers />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/guide" element={<Guide openGuide={sharedProps.openGuide} />} />
+            <Route path="/developers" element={<Developers openGuide={sharedProps.openGuide} />} />
+            <Route path="*" element={<NotFound openGuide={sharedProps.openGuide} />} />
           </Routes>
         </main>
 
         <div className="safe-x safe-pb fixed inset-x-0 bottom-0 z-10 bg-gradient-to-t from-cream to-transparent pt-4 sm:static sm:shrink-0 sm:bg-none sm:p-4">
           <Navbar />
         </div>
+
+        {guideOpen ? (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-espresso/40 p-4"
+            onClick={() => setGuideOpen(false)}
+          >
+            <div
+              className="max-h-[85vh] w-full max-w-xl overflow-y-auto rounded-3xl bg-cream p-5 shadow-card"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="text-xl font-semibold text-espresso">Guide</h2>
+                <button
+                  type="button"
+                  onClick={() => setGuideOpen(false)}
+                  aria-label="Close guide"
+                  className="grid h-10 w-10 place-items-center rounded-full text-mocha transition-colors duration-150 hover:bg-rose/10 hover:text-rose focus-visible:ring-2 focus-visible:ring-rose/50 focus-visible:outline-none"
+                >
+                  ×
+                </button>
+              </div>
+              <GuideContent />
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   )

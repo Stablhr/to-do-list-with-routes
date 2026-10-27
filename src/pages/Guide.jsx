@@ -16,7 +16,7 @@ const STEPS = [
   },
   {
     title: 'Delete a task',
-    body: 'Press the trash Delete button on the right side of a task. To remove everything in a group, use Clear all tasks in this group.',
+    body: 'Press the trash Delete button on the right side of a task. To remove everything in a category, use Clear all tasks in this category.',
   },
   {
     title: 'Navigate between pages and categories',
@@ -24,12 +24,10 @@ const STEPS = [
   },
 ]
 
-export default function Guide() {
+export function GuideContent() {
   return (
-    <div className="flex flex-col gap-5 px-0 py-2">
-      <Header title="Guide" />
-
-      <ol className="flex flex-col gap-3 short-screen:mt-0">
+    <>
+      <ol className="flex flex-col gap-3">
         {STEPS.map((step, index) => (
           <li
             key={step.title}
@@ -48,10 +46,20 @@ export default function Guide() {
 
       <Link
         to="/categories"
-        className="flex min-h-11 items-center justify-center rounded-2xl bg-latte px-5 py-3 font-medium text-white shadow-btn transition-[background-color,transform] duration-150 ease-out hover:bg-latte-dark active:scale-95 focus-visible:ring-2 focus-visible:ring-latte-dark/60 focus-visible:outline-none"
+        className="mt-4 flex min-h-11 items-center justify-center rounded-2xl bg-latte px-5 py-3 font-medium text-white shadow-btn transition-[background-color,transform] duration-150 ease-out hover:bg-latte-dark active:scale-95 focus-visible:ring-2 focus-visible:ring-latte-dark/60 focus-visible:outline-none"
       >
         Go to Categories
       </Link>
+    </>
+  )
+}
+
+export default function Guide({ openGuide }) {
+  return (
+    <div className="flex flex-col gap-5 px-0 py-2">
+      <Header title="Guide" onGuideClick={openGuide} />
+
+      <GuideContent />
     </div>
   )
 }

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import Header from '../components/Header.jsx'
 
-export default function NotFound() {
+export default function NotFound({ openGuide }) {
   return (
     <div className="flex flex-col gap-5 px-0 py-2">
-      <Header title="Not Found" />
+      <Header title="Not Found" onGuideClick={openGuide} />
       <section className="rounded-3xl bg-sand/60 p-5 text-center">
         <p className="text-espresso">Page not found.</p>
         <p className="mt-1 text-sm text-mocha">

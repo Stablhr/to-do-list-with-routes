@@ -9,7 +9,7 @@ const dateLabel = new Date().toLocaleDateString(undefined, {
   day: 'numeric',
 })
 
-export default function Home({ tasks, clearAllTasks }) {
+export default function Home({ tasks, clearAllTasks, openGuide }) {
   const total = tasks.length
   const completed = tasks.filter((t) => t.done).length
   const pending = total - completed
@@ -24,7 +24,7 @@ export default function Home({ tasks, clearAllTasks }) {
 
   return (
     <div className="flex flex-col gap-5 px-0 py-2">
-      <Header title="Home" date={dateLabel} />
+      <Header title="Home" date={dateLabel} onGuideClick={openGuide} />
 
       <section className="rounded-3xl bg-sand/60 p-5">
         <h2 className="text-xl font-semibold text-espresso">

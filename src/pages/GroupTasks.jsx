@@ -13,6 +13,7 @@ export default function GroupTasks({
   toggleTask,
   deleteTask,
   clearGroupTasks,
+  openGuide,
 }) {
   const { groupId, categoryId } = useParams()
   const resolvedGroupId = groupId || categoryId
@@ -23,7 +24,7 @@ export default function GroupTasks({
   if (!group) {
     return (
       <div className="flex flex-col gap-5 px-0 py-2">
-        <Header title="Category not found" />
+        <Header title="Category not found" onGuideClick={openGuide} />
         <section className="rounded-3xl bg-sand/60 p-5 text-center">
           <p className="text-mocha">
             We couldn't find a category with that name. It may have been removed.
@@ -60,7 +61,7 @@ export default function GroupTasks({
 
   return (
     <div className="flex flex-col gap-5 px-0 py-2">
-      <Header title={group.name} date={`${done} of ${total} done`} />
+      <Header title={group.name} date={`${done} of ${total} done`} onGuideClick={openGuide} />
 
       <Link
         to="/categories"

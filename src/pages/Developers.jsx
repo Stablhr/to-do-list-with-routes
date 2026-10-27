@@ -19,10 +19,10 @@ function initials(name) {
     .toUpperCase()
 }
 
-export default function Developers() {
+export default function Developers({ openGuide }) {
   return (
     <div className="flex flex-col gap-5 px-0 py-2">
-      <Header title="Developers" />
+      <Header title="Developers" onGuideClick={openGuide} />
 
       <h2 className="text-center text-xl font-semibold text-espresso">
         Meet the Developers

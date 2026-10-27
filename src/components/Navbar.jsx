@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom'
-import { BookIcon, CoffeeIcon, ListIcon, PersonIcon } from './icons.jsx'
+import { CoffeeIcon, ListIcon, PersonIcon } from './icons.jsx'
 
 // `end` on Home so it is only active on exactly "/".
 const LINKS = [
   { to: '/', label: 'Home', Icon: CoffeeIcon, end: true },
   { to: '/categories', label: 'Categories', Icon: ListIcon },
-  { to: '/guide', label: 'Guide', Icon: BookIcon },
   { to: '/developers', label: 'Developers', Icon: PersonIcon },
 ]
 
