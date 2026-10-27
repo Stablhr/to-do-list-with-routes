@@ -134,3 +134,20 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Always show a scrollbar on phones so the scroll area is discoverable. */
+@media (max-width: 639px) {
+  .scroll-area {
+    overflow-y: scroll;
+  }
+}
+
+/* Hide the scrollbar on the Home page at desktop widths (content still scrolls). */
+@media (min-width: 640px) {
+  .home-desktop {
+    scrollbar-width: none;
+  }
+  .home-desktop::-webkit-scrollbar {
+    display: none;
+  }
+}

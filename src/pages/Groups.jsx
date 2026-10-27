@@ -4,7 +4,7 @@ import Header from '../components/Header.jsx'
 import GroupCard from '../components/GroupCard.jsx'
 import EmptyState from '../components/EmptyState.jsx'
 
-export default function Groups({ groups, tasks, addGroup, deleteGroup }) {
+export default function Groups({ groups, tasks, addGroup, deleteGroup, clearGroupTasks }) {
   const [name, setName] = useState('')
   const [error, setError] = useState('')
 
@@ -32,6 +32,14 @@ export default function Groups({ groups, tasks, addGroup, deleteGroup }) {
         : `Delete group "${group.name}"? This cannot be undone.`
     if (window.confirm(message)) {
       deleteGroup(group.id)
+    }
+  }
+
+  function handleClearGroup(group) {
+    const taskCount = tasks.filter((t) => t.groupId === group.id).length
+    if (taskCount === 0) return
+    if (window.confirm(`Clear all ${taskCount} task(s) in "${group.name}"?`)) {
+      clearGroupTasks(group.id)
     }
   }
 
@@ -81,6 +89,7 @@ export default function Groups({ groups, tasks, addGroup, deleteGroup }) {
                 taskCount={total}
                 doneCount={done}
                 onDelete={() => handleDeleteGroup(group)}
+                onClear={() => handleClearGroup(group)}
               />
             )
           })}
