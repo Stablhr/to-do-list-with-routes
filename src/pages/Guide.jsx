@@ -3,12 +3,12 @@ import Header from '../components/Header.jsx'
 
 const STEPS = [
   {
-    title: 'Create a task group',
-    body: 'Go to the Groups page, type a name in the input, and press Create Group. Empty or duplicate names are rejected.',
+    title: 'Create a category',
+    body: 'Go to the Categories page, type a name in the input, and press Create Category. Empty or duplicate names are rejected.',
   },
   {
-    title: 'Add a task to a selected group',
-    body: 'Open a group from the Groups page, then type your task in the input and press Add Task (or hit Enter). It appears marked Not Done.',
+    title: 'Add a task to a selected category',
+    body: 'Open a category from the Categories page, then type your task in the input and press Add Task (or hit Enter). It appears marked Not Done.',
   },
   {
     title: 'Mark a task as Done or Not Done',
@@ -19,8 +19,8 @@ const STEPS = [
     body: 'Press the trash Delete button on the right side of a task. To remove everything in a group, use Clear all tasks in this group.',
   },
   {
-    title: 'Navigate between pages and groups',
-    body: 'Use the navigation bar (Home, Groups, Guide, Developers) at the bottom. On a group page, use ← Back to Groups. On the dashboard, use the Go to Task Groups button. Open buttons on group cards open that group.',
+    title: 'Navigate between pages and categories',
+    body: 'Use the navigation bar (Home, Categories, Guide, Developers) at the bottom. On a category page, use ← Back to Categories. On the dashboard, use the Go to Categories button. Open buttons on category cards open that category.',
   },
 ]
 
@@ -47,10 +47,10 @@ export default function Guide() {
       </ol>
 
       <Link
-        to="/groups"
+        to="/categories"
         className="flex min-h-11 items-center justify-center rounded-2xl bg-latte px-5 py-3 font-medium text-white shadow-btn transition-[background-color,transform] duration-150 ease-out hover:bg-latte-dark active:scale-95 focus-visible:ring-2 focus-visible:ring-latte-dark/60 focus-visible:outline-none"
       >
-        Go to Task Groups
+        Go to Categories
       </Link>
     </div>
   )

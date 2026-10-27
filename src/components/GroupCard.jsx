@@ -23,7 +23,7 @@ export default function GroupCard({ group, taskCount, doneCount, onDelete, onCle
             Clear all
           </button>
           <Link
-            to={`/groups/${group.id}`}
+            to={`/categories/${group.id}`}
             className="rounded-2xl bg-latte px-4 py-2 text-sm font-medium text-white shadow-btn transition-[background-color,transform] duration-150 ease-out hover:bg-latte-dark active:scale-95 focus-visible:ring-2 focus-visible:ring-latte-dark/60 focus-visible:outline-none"
           >
             Open
@@ -31,7 +31,7 @@ export default function GroupCard({ group, taskCount, doneCount, onDelete, onCle
           <button
             type="button"
             onClick={onDelete}
-            aria-label={`Delete group: ${group.name}`}
+            aria-label={`Delete category: ${group.name}`}
             className="grid h-10 w-10 place-items-center rounded-full text-mocha transition-colors duration-150 hover:bg-rose/10 hover:text-rose focus-visible:ring-2 focus-visible:ring-rose/50 focus-visible:outline-none"
           >
             <TrashIcon className="h-5 w-5" />

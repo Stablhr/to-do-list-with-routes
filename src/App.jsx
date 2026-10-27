@@ -35,11 +35,11 @@ export default function App() {
   // ---- Group handlers ----
   function addGroup(name) {
     const trimmed = (name || '').trim()
-    if (!trimmed) return 'Group name cannot be empty.'
+    if (!trimmed) return 'Category name cannot be empty.'
     const duplicate = groups.some(
       (g) => g.name.trim().toLowerCase() === trimmed.toLowerCase(),
     )
-    if (duplicate) return 'A group with that name already exists.'
+    if (duplicate) return 'A category with that name already exists.'
     const base = slugify(trimmed) || 'group'
     let id = base
     const existing = new Set(groups.map((g) => g.id))
@@ -111,6 +111,8 @@ export default function App() {
             <Route path="/" element={<Home {...sharedProps} />} />
             <Route path="/groups" element={<Groups {...sharedProps} />} />
             <Route path="/groups/:groupId" element={<GroupTasks {...sharedProps} />} />
+            <Route path="/categories" element={<Groups {...sharedProps} />} />
+            <Route path="/categories/:categoryId" element={<GroupTasks {...sharedProps} />} />
             <Route path="/guide" element={<Guide />} />
             <Route path="/developers" element={<Developers />} />
             <Route path="*" element={<NotFound />} />

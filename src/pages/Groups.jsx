@@ -28,8 +28,8 @@ export default function Groups({ groups, tasks, addGroup, deleteGroup, clearGrou
     const taskCount = tasks.filter((t) => t.groupId === group.id).length
     const message =
       taskCount > 0
-        ? `Delete group "${group.name}" and its ${taskCount} task(s)? This cannot be undone.`
-        : `Delete group "${group.name}"? This cannot be undone.`
+        ? `Delete category "${group.name}" and its ${taskCount} task(s)? This cannot be undone.`
+        : `Delete category "${group.name}"? This cannot be undone.`
     if (window.confirm(message)) {
       deleteGroup(group.id)
     }
@@ -45,7 +45,7 @@ export default function Groups({ groups, tasks, addGroup, deleteGroup, clearGrou
 
   return (
     <div className="flex flex-col gap-5 px-0 py-2">
-      <Header title="Groups" />
+      <Header title="Categories" />
 
       <form onSubmit={handleCreate} className="flex flex-col gap-3 sm:flex-row">
         <label htmlFor="new-group" className="sr-only">
@@ -59,7 +59,7 @@ export default function Groups({ groups, tasks, addGroup, deleteGroup, clearGrou
             setName(e.target.value)
             if (error) setError('')
           }}
-          placeholder="New group name…"
+          placeholder="New category name…"
           autoComplete="off"
           className="min-w-0 flex-1 rounded-2xl bg-sand px-4 py-3 text-base text-espresso placeholder:text-mocha focus-visible:ring-2 focus-visible:ring-latte/60 focus-visible:outline-none"
         />
@@ -67,7 +67,7 @@ export default function Groups({ groups, tasks, addGroup, deleteGroup, clearGrou
           type="submit"
           className="w-full shrink-0 rounded-2xl bg-latte px-5 py-3 font-medium text-white shadow-btn transition-[background-color,transform] duration-150 ease-out hover:bg-latte-dark active:scale-95 focus-visible:ring-2 focus-visible:ring-latte-dark/60 focus-visible:outline-none sm:w-auto"
         >
-          Create Group
+          Create Category
         </button>
       </form>
       {error ? (
