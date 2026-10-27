@@ -1,0 +1,64 @@
+import { Link } from 'react-router-dom'
+import Header from '../components/Header.jsx'
+
+// EDIT HERE: replace the placeholder names and roles below with the real
+// group members' complete full names and their roles / contributions.
+const developers = [
+  { name: 'FULL NAME 1', role: 'Role / contribution' },
+  { name: 'FULL NAME 2', role: 'Role / contribution' },
+  { name: 'FULL NAME 3', role: 'Role / contribution' },
+]
+
+function initials(name) {
+  return name
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join('')
+    .toUpperCase()
+}
+
+export default function Developers() {
+  return (
+    <div className="flex flex-col gap-5 px-0 py-2">
+      <Header title="Developers" />
+
+      <h2 className="text-center text-xl font-semibold text-espresso">
+        Meet the Developers
+      </h2>
+
+      <ul className="flex flex-col gap-3">
+        {developers.map((dev) => (
+          <li
+            key={dev.name}
+            className="flex items-center gap-4 rounded-3xl bg-sand/60 p-4 sm:p-5"
+          >
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-latte text-base font-semibold text-white">
+              {initials(dev.name)}
+            </span>
+            <div className="min-w-0">
+              <div className="truncate font-semibold text-espresso">{dev.name}</div>
+              <div className="text-sm text-mocha">{dev.role}</div>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div className="flex flex-col gap-2 sm:flex-row">
+        <Link
+          to="/"
+          className="flex min-h-11 flex-1 items-center justify-center rounded-2xl bg-sand px-5 py-3 font-medium text-espresso transition-colors duration-150 hover:bg-sand-dark focus-visible:ring-2 focus-visible:ring-latte/60 focus-visible:outline-none"
+        >
+          Back to dashboard
+        </Link>
+        <Link
+          to="/groups"
+          className="flex min-h-11 flex-1 items-center justify-center rounded-2xl bg-sand px-5 py-3 font-medium text-espresso transition-colors duration-150 hover:bg-sand-dark focus-visible:ring-2 focus-visible:ring-latte/60 focus-visible:outline-none"
+        >
+          Task Groups
+        </Link>
+      </div>
+    </div>
+  )
+}
