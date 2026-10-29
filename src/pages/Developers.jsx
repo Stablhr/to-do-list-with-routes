@@ -4,9 +4,10 @@ import Header from '../components/Header.jsx'
 // EDIT HERE: replace the placeholder names and roles below with the real
 // group members' complete full names and their roles / contributions.
 const developers = [
-  { name: 'ARIES', role: 'Plan' },
-  { name: 'BALDERAS', role: 'Develop' },
-  { name: 'SAMSON', role: 'Deploy' },
+  { name: 'LAPAZ, JASMINE'},
+  { name: 'SAMSON, ARIES B'},
+  { name: 'TALLA, JOHN HAROLD'},
+  { name: 'VINOYA, JURICHIN'},
 ]
 
 function initials(name) {
